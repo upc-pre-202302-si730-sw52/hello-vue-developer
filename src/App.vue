@@ -3,6 +3,6 @@ import Welcome from "./welcoming/components/welcome.component.vue";
 </script>
 
 <template>
-  <welcome />
+  <welcome first-name="John" last-name="Doe" />
 </template>
 
