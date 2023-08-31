@@ -1,4 +1,5 @@
 <script>
+import {Developer} from "../model/developer.entity.js";
 export default {
   name: "welcome",
   props: {
@@ -8,7 +9,8 @@ export default {
 
   methods: {
     developerName() {
-      return this.firstName == null || this.lastName == null ? "Unknown" : `${this.firstName} ${this.lastName}`.trim();
+      let developer = new Developer(this.firstName, this.lastName);
+      return developer.fullName;
     }
   }
 }
