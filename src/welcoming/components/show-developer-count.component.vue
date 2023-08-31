@@ -1,15 +1,10 @@
 <script>
 export default {
   name: "show-developer-count",
-  data() {
-    return {
-      developerCount: 0
-    };
-  },
-  methods: {
-    onDeveloperRegistered(developer) {
-      if (developer.fullName !== "Unknown")
-        this.developerCount++;
+  props: {
+    developerCount: {
+      type: Number,
+      required: true
     }
   }
 }

@@ -1,13 +1,15 @@
 <script>
 import Welcome from "./welcoming/components/welcome.component.vue";
 import RegisterDeveloper from "./welcoming/components/register-developer.component.vue";
+import ShowDeveloperCount from "./welcoming/components/show-developer-count.component.vue";
 export default {
   name: "app",
-  components: {Welcome, RegisterDeveloper},
+  components: {ShowDeveloperCount, Welcome, RegisterDeveloper},
   data() {
     return {
       firstName: '',
-      lastName: ''
+      lastName: '',
+      developerCount: 0
     }
     },
   methods: {
@@ -15,6 +17,12 @@ export default {
       this.firstName = developer.firstName;
       this.lastName = developer.lastName;
       console.log("Developer registered: ", developer);
+      this.updateDeveloperCount(developer);
+    },
+
+    updateDeveloperCount(developer) {
+      if (developer.fullName !== "Unknown")
+        this.developerCount++;
     }
   }
 
@@ -26,5 +34,6 @@ export default {
   <h1>Hello Vue Developer Application</h1>
   <register-developer v-on:developer-registered="onDeveloperRegistered" />
   <welcome :first-name="firstName" :last-name="lastName" />
+  <show-developer-count :developer-count="developerCount" />
 </template>
 
